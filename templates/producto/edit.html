@@ -1,0 +1,12 @@
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <label>Nombre:</label> {{ form.nombre }}
+    <label>Stock:</label> {{ form.stock }}
+    <label>Precio:</label> {{ form.precio }}
+    <label>Categoría:</label> {{ form.categoria_id }}
+    <label>Imagen URL:</label> {{ form.imagen }}
+    <button type="submit">Guardar</button>
+</form>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+</head>

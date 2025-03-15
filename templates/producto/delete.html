@@ -1,0 +1,8 @@
+<h2>¿Seguro que quieres eliminar "{{ producto.nombre }}"?</h2>
+<form method="POST">
+    <button type="submit">Eliminar</button>
+</form>
+<a href="{{ url_for('index') }}">Cancelar</a>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+</head>

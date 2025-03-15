@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Agregar Producto</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    
+    <label>Nombre:</label>
+    {{ form.nombre(class="form-control") }}
+    
+    <label>Stock:</label>
+    {{ form.stock(class="form-control") }}
+    
+    <label>Precio:</label>
+    {{ form.precio(class="form-control") }}
+    
+    <label>Categoría:</label>
+    {{ form.categoria_id(class="form-control") }}
+
+    <label>Imagen URL:</label>
+    {{ form.imagen(class="form-control") }}
+
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a href="{{ url_for('lista_productos') }}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

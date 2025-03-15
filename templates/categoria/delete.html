@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Eliminar Categoría</h2>
+<p>¿Seguro que deseas eliminar la categoría "{{ categoria.nombre }}"?</p>
+<form method="POST">
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="{{ url_for('lista_categorias') }}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+</head>
