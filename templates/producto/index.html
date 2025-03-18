@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,36 +5,46 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
 </head>
 <body>
-<div class="table-container">
+
+<div class="container">
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='img/logoTiendona.png') }}" alt="Logo" class="navbar-logo">
+        </a>        
+    </nav>
     <h1>Lista de Productos</h1>
-    <a href="{{ url_for('agregar_producto') }}">Agregar Producto</a>
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Stock</th>
-                <th>Precio</th>
-                <th>Categoría</th>
-                <th>Imagen</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for producto in productos %}
-            <tr>
-                <td>{{ producto.nombre }}</td>
-                <td>{{ producto.stock }}</td>
-                <td>${{ producto.precio }}</td>
-                <td>{{ producto.categoria.nombre }}</td>
-                <td><img src="{{ producto.imagen }}" alt="{{ producto.nombre }}" width="50"></td>
-                <td>
-                    <a href="{{ url_for('editar_producto', id=producto.id) }}">Editar</a>
-                    <a href="{{ url_for('eliminar_producto', id=producto.id) }}">Eliminar</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <a href="{{ url_for('agregar_producto') }}" class="btn" style="color: black;">Agregar Producto</a>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Stock</th>
+                    <th>Precio</th>
+                    <th>Categoría</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td>{{ producto.nombre }}</td>
+                    <td>{{ producto.stock }}</td>
+                    <td>${{ producto.precio }}</td>
+                    <td>{{ producto.categoria.nombre }}</td>
+                    <td><img src="{{ producto.imagen }}" alt="{{ producto.nombre }}" width="50"></td>
+                    <td>
+                        <a href="{{ url_for('editar_producto', id=producto.id) }}">Editar</a>
+                        <a href="{{ url_for('eliminar_producto', id=producto.id) }}">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
+
 </body>
 </html>
