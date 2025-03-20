@@ -23,6 +23,7 @@
                     <th>Stock</th>
                     <th>Precio</th>
                     <th>Categoría</th>
+                    <th>Descripcion</th>
                     <th>Imagen</th>
                     <th>Acciones</th>
                 </tr>
@@ -34,6 +35,7 @@
                     <td>{{ producto.stock }}</td>
                     <td>${{ producto.precio }}</td>
                     <td>{{ producto.categoria.nombre }}</td>
+                    <td>{{ producto.descripcion }}</td>
                     <td><img src="{{ producto.imagen }}" alt="{{ producto.nombre }}" width="50"></td>
                     <td>
                         <a href="{{ url_for('editar_producto', id=producto.id) }}">Editar</a>

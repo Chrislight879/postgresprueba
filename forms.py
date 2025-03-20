@@ -8,4 +8,5 @@ class ProductoForm(FlaskForm):
     precio = DecimalField('Precio', validators=[DataRequired(), NumberRange(min=0)])
     categoria_id = SelectField('Categoría', coerce=int, validators=[DataRequired()])
     imagen = StringField('URL de la Imagen', validators=[DataRequired()])
+    descripcion = StringField('Descripcion del producto', validators=[DataRequired()])
     submit = SubmitField('Guardar')
