@@ -1,4 +1,54 @@
 
+/* Navbar */
+/* Navbar */
+.navbar {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo alineado a la izquierda */
+.navbar-logo img {
+    height: 40px;
+    width: auto;
+}
+
+/* Contenedor de enlaces alineado a la derecha */
+.navbar-links {
+    display: flex;
+    gap: 15px;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar-links a:hover {
+    text-decoration: underline;
+}
+
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar-logo {
+    height: 50px;
+    width: auto;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: #f0f2f5;

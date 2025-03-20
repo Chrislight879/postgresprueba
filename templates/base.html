@@ -11,6 +11,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
 </head>
 <body>
+
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='img/logoTiendona.png') }}" alt="Logo" class="navbar-logo">
+        </a>        
+    </nav>
+    
     <header>
         <h1>Bienvenido a Mi Tienda</h1>
     </header>

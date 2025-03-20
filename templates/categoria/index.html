@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+
 <h2>Categorías</h2>
-<a href="{{ url_for('agregar_categoria') }}" class="btn btn-primary">Agregar Categoría</a>
+<a href="{{ url_for('agregar_categoria') }}" class="btn btn-primary" style="color: black;">Agregar Categoría</a>
 <div class="table-container">
 <table>
     <thead>
@@ -17,8 +18,8 @@
             <td>{{ categoria.id }}</td>
             <td>{{ categoria.nombre }}</td>
             <td>
-                <a href="{{ url_for('editar_categoria', id=categoria.id) }}" class="btn btn-warning">Editar</a>
-                <a href="{{ url_for('eliminar_categoria', id=categoria.id) }}" class="btn btn-danger">Eliminar</a>
+                <a href="{{ url_for('editar_categoria', id=categoria.id) }}" class="btn btn-warning" style="color: black;">Editar</a>
+                <a href="{{ url_for('eliminar_categoria', id=categoria.id) }}" class="btn btn-danger" style="color: blue;">Eliminar</a>
             </td>
         </tr>
         {% endfor %}
