@@ -6,7 +6,7 @@ from models import db, Producto, Categoria
 app = Flask(__name__)
 
 # CONEXION A BASE DE DATOS
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:catolica10@localhost:5432/TiendonaDb"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:12345@localhost:5432/TiendonaDb"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = "clave_secreta"
 
@@ -45,6 +45,7 @@ def agregar_producto():
             stock=form.stock.data,
             precio=form.precio.data,
             categoria_id=form.categoria_id.data,
+            descripcion=form.descripcion.data,
             imagen=form.imagen.data
         )
         db.session.add(nuevo_producto)
@@ -64,6 +65,7 @@ def editar_producto(id):
         producto.stock = form.stock.data
         producto.precio = form.precio.data
         producto.categoria_id = form.categoria_id.data
+        producto.descripcion = form.descripcion.data
         producto.imagen = form.imagen.data
         db.session.commit()
         return redirect(url_for('lista_productos'))
