@@ -6,7 +6,11 @@ from models import db, Producto, Categoria
 app = Flask(__name__)
 
 # CONEXION A BASE DE DATOS
+<<<<<<< HEAD
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:12345@localhost:5432/TiendonaDb"
+=======
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:1234@localhost:5432/TiendonaDb"
+>>>>>>> b2557b79df7277c645228ec631c04050c2ad8be9
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = "clave_secreta"
 
