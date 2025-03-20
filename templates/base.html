@@ -15,14 +15,15 @@
     <nav class="navbar">
         <a href="{{ url_for('index') }}">
             <img src="{{ url_for('static', filename='img/logoTiendona.png') }}" alt="Logo" class="navbar-logo">
-        </a>        
+        </a>    
+        <h1>Bienvenido a Mi Tienda</h1>    
     </nav>
     
     <header>
-        <h1>Bienvenido a Mi Tienda</h1>
+        
     </header>
 
-    <main>
+    <main style="padding-top: 40dp;">
         <div class="menu-container">
             <a href="{{ url_for('lista_productos') }}" class="btn btn-productos">Productos</a>
             <a href="{{ url_for('lista_categorias') }}" class="btn btn-categorias">Categorías</a>

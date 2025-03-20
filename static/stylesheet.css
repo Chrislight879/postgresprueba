@@ -32,6 +32,11 @@
     text-decoration: underline;
 }
 
+.navbar h1 {
+    flex-grow: 1;
+    text-align: center;
+}
+
 
 .navbar-content {
     display: flex;
@@ -56,6 +61,11 @@ body {
     margin: 0;
     padding: 20px;
 }
+
+main {
+    margin-top: 60px; /* En lugar de dp, usa px */
+}
+
 
 
 header h1 {
