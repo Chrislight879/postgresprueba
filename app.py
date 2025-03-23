@@ -1,17 +1,14 @@
 from flask import Flask, render_template, redirect, url_for, request
 from flask_sqlalchemy import SQLAlchemy
-from forms import ProductoForm 
+from forms import ProductoForm
 from models import db, Producto, Categoria
 
 app = Flask(__name__)
 
-# CONEXION A BASE DE DATOS
-
-#app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:12345@localhost:5432/TiendonaDb"
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:catolica10@localhost:5432/TiendonaDb"
+# CONEXIÓN A BASE DE DATOS
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:12345@localhost:5432/TiendonaDb"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = "clave_secreta"
-
 
 db.init_app(app)
 
@@ -22,7 +19,6 @@ with app.app_context():
 # ===========================
 #   RUTA PRINCIPAL
 # ===========================
-
 @app.route('/')
 def index():
     return render_template('base.html')
@@ -30,15 +26,22 @@ def index():
 # ===========================
 #   RUTAS PARA PRODUCTOS
 # ===========================
-
 @app.route('/productos')
 def lista_productos():
-    productos = Producto.query.all()
-    return render_template('producto/index.html', productos=productos)
+    q = request.args.get('q', '')  
+    
+    if q:
+        productos = Producto.query.join(Categoria).filter(
+            (Producto.nombre.ilike(f"%{q}%")) | (Categoria.nombre.ilike(f"%{q}%"))
+        ).all()
+    else:
+        productos = Producto.query.all()
+    
+    return render_template('producto/index.html', productos=productos, q=q)
 
 @app.route('/productos/agregar', methods=['GET', 'POST'])
 def agregar_producto():
-    form = ProductoForm() 
+    form = ProductoForm()
     form.categoria_id.choices = [(c.id, c.nombre) for c in Categoria.query.all()]
 
     if form.validate_on_submit():
@@ -53,7 +56,7 @@ def agregar_producto():
         db.session.add(nuevo_producto)
         db.session.commit()
         return redirect(url_for('lista_productos'))
-    
+
     return render_template('producto/add.html', form=form)
 
 @app.route('/productos/editar/<int:id>', methods=['GET', 'POST'])
@@ -71,7 +74,7 @@ def editar_producto(id):
         producto.imagen = form.imagen.data
         db.session.commit()
         return redirect(url_for('lista_productos'))
-    
+
     return render_template('producto/edit.html', form=form, producto=producto)
 
 @app.route('/productos/eliminar/<int:id>', methods=['GET', 'POST'])
@@ -88,7 +91,6 @@ def eliminar_producto(id):
 # ===========================
 #   RUTAS PARA CATEGORÍAS
 # ===========================
-
 @app.route('/categorias')
 def lista_categorias():
     categorias = Categoria.query.all()
@@ -102,7 +104,7 @@ def agregar_categoria():
         db.session.add(nueva_categoria)
         db.session.commit()
         return redirect(url_for('lista_categorias'))
-    
+
     return render_template('categoria/add.html')
 
 @app.route('/categorias/editar/<int:id>', methods=['GET', 'POST'])
@@ -130,6 +132,5 @@ def eliminar_categoria(id):
 # ===========================
 #   EJECUTAR LA APLICACIÓN
 # ===========================
-
 if __name__ == "__main__":
     app.run(debug=True)
