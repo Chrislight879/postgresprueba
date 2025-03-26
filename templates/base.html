@@ -5,35 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Mi Tienda{% endblock %}</title>
     
-    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
 </head>
 <body>
 
-    <nav class="navbar">
-        <a href="{{ url_for('index') }}">
-            <img src="{{ url_for('static', filename='img/logoTiendona.png') }}" alt="Logo" class="navbar-logo">
-        </a>    
-        <h1>Bienvenido a Mi Tienda</h1>    
-    </nav>
-    
-    <header>
-        
-    </header>
+    {% include 'navbar.html' %}  <!-- Incluye la navbar -->
 
-    <main style="padding-top: 40dp;">
+    <header></header>
+
+    <main style="padding-top: 40px;">
         <div class="menu-container">
+            
             <a href="{{ url_for('lista_productos') }}" class="btn btn-productos">Productos</a>
+
             <a href="{{ url_for('lista_categorias') }}" class="btn btn-categorias">Categorías</a>
         </div>
 
-        {% block content %}{% endblock %}
+        {% block content %}{% endblock %}  <!-- El contenido específico de la página -->
     </main>
 
-    <footer>
-        <p>© 2024 Mi Tienda - Todos los derechos reservados</p>
-    </footer>
+    {% include 'footer.html' %}  <!-- Incluye el footer -->
+
 </body>
 </html>

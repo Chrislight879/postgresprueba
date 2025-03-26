@@ -1,57 +1,74 @@
 
 /* Navbar */
-/* Navbar */
+
+
+/* Logo alineado a la izquierda */
 .navbar {
     background-color: #007bff;
     color: white;
-    padding: 15px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-}
-
-/* Logo alineado a la izquierda */
-.navbar-logo img {
+    align-items: center;
     height: 40px;
     width: auto;
+    padding: 10px 20px;
 }
 
-/* Contenedor de enlaces alineado a la derecha */
-.navbar-links {
-    display: flex;
-    gap: 15px;
-}
-
-.navbar-links a {
+.navbar a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
+    padding: 10px;
+    display: block;
 }
 
-.navbar-links a:hover {
-    text-decoration: underline;
-}
-
-.navbar h1 {
-    flex-grow: 1;
-    text-align: center;
-}
-
-
-.navbar-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navbar-title {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.navbar-logo {
+.navbar-logo img {
     height: 50px;
     width: auto;
+}
+
+.navbar-links {
+    position: relative;
+    display: inline-block;
+}
+
+/* Estilo del botón de menú */
+.dropbtn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Estilos de la lista desplegable */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+}
+
+.dropdown-content li {
+    padding: 10px;
+}
+
+.dropdown-content li a {
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content li a:hover {
+    background-color: #ddd;
+}
+
+/* Mostrar el menú cuando tenga la clase "show" */
+.show {
+    display: block;
 }
 
 body {

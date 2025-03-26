@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # CONEXION A BASE DE DATOS
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:1234@localhost:5432/TiendonaDb"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:catolica10@localhost:5432/TiendonaDb"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = "clave_secreta"
 
@@ -26,14 +26,28 @@ with app.app_context():
 def index():
     return render_template('base.html')
 
+@app.route('/contacto')
+def contacto():
+    return render_template('contacto.html')  # Asegúrate de que el archivo contacto.html existe
+
+
 # ===========================
 #   RUTAS PARA PRODUCTOS
 # ===========================
 
-@app.route('/productos')
+@app.route('/productos', methods=['GET'])
 def lista_productos():
-    productos = Producto.query.all()
-    return render_template('producto/index.html', productos=productos)
+    # Obtén el término de búsqueda desde la URL (si existe)
+    q = request.args.get('q', '')  # Si no hay valor, usará una cadena vacía
+
+    # Realiza la consulta a la base de datos y filtra por el término de búsqueda (si existe)
+    if q:
+        productos = Producto.query.filter(Producto.nombre.contains(q)).all()  # Filtra productos que contienen 'q' en el nombre
+    else:
+        productos = Producto.query.all()  # Si no hay búsqueda, muestra todos los productos
+
+    return render_template('producto/index.html', productos=productos, q=q)
+
 
 @app.route('/productos/agregar', methods=['GET', 'POST'])
 def agregar_producto():

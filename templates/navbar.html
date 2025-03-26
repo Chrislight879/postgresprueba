@@ -1,0 +1,37 @@
+<script>
+    function toggleMenu() {
+        document.getElementById("dropdown").classList.toggle("show");
+    }
+
+    // Cerrar el menú si el usuario hace clic fuera de él
+    window.onclick = function(event) {
+        if (!event.target.matches('.navbar-links a')) {
+            var dropdowns = document.getElementsByClassName("dropdown-menu");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
+
+<nav class="navbar">
+    <a href="{{ url_for('index') }}" class="navbar-logo">
+        <img src="{{ url_for('static', filename='img/logoTiendona.png') }}" alt="Logo">
+    </a>    
+    <h1 class="navbar-title">Bienvenido a Mi Tienda</h1>  
+
+    <!-- Menú desplegable -->
+    <div class="navbar-links">
+        <button class="dropbtn" onclick="toggleMenu()">Menú ▼</button>
+        <ul id="dropdown" class="dropdown-content">
+            <li><a href="{{ url_for('lista_productos') }}">Productos</a></li>
+            <li><a href="{{ url_for('contacto') }}">Contacto</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+

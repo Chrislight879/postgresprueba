@@ -6,53 +6,49 @@
 </head>
 <body>
 
-<div class="container">
-    <nav class="navbar">
-        <a href="{{ url_for('index') }}">
-            <img src="{{ url_for('static', filename='img/logoTiendona.png') }}" alt="Logo" class="navbar-logo">
-        </a>        
-    </nav>
-   
-    <a href="{{ url_for('agregar_producto') }}" class="btn" style="color: black;">Agregar Producto</a>
+    {% include "navbar.html" %}  <!-- ✅ Solo se incluye el navbar aquí -->
 
+    <div class="container">
+        <a href="{{ url_for('agregar_producto') }}" class="btn" style="color: black;">Agregar Producto</a>
 
-    <form method="GET" action="{{ url_for('lista_productos') }}" class="search-form">
-        <input type="text" name="q" placeholder="Buscar producto..." value="{{ q }}">
-        <button type="submit">Buscar</button>
-    </form>
+        <form method="GET" action="{{ url_for('lista_productos') }}" class="search-form">
+            <input type="text" name="q" placeholder="Buscar producto..." value="{{ q }}">
+            <button type="submit">Buscar</button>
+        </form>
+        
 
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Stock</th>
-                    <th>Precio</th>
-                    <th>Categoría</th>
-                    <th>Descripcion</th>
-                    <th>Imagen</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for producto in productos %}
-                <tr>
-                    <td>{{ producto.nombre }}</td>
-                    <td>{{ producto.stock }}</td>
-                    <td>${{ producto.precio }}</td>
-                    <td>{{ producto.categoria.nombre }}</td>
-                    <td>{{ producto.descripcion }}</td>
-                    <td><img src="{{ producto.imagen }}" alt="{{ producto.nombre }}" width="50"></td>
-                    <td>
-                        <a href="{{ url_for('editar_producto', id=producto.id) }}">Editar</a>
-                        <a href="{{ url_for('eliminar_producto', id=producto.id) }}">Eliminar</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Stock</th>
+                        <th>Precio</th>
+                        <th>Categoría</th>
+                        <th>Descripcion</th>
+                        <th>Imagen</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in productos %}
+                    <tr>
+                        <td>{{ producto.nombre }}</td>
+                        <td>{{ producto.stock }}</td>
+                        <td>${{ producto.precio }}</td>
+                        <td>{{ producto.categoria.nombre }}</td>
+                        <td>{{ producto.descripcion }}</td>
+                        <td><img src="{{ producto.imagen }}" alt="{{ producto.nombre }}" width="50"></td>
+                        <td>
+                            <a href="{{ url_for('editar_producto', id=producto.id) }}">Editar</a>
+                            <a href="{{ url_for('eliminar_producto', id=producto.id) }}">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 
 </body>
 </html>
