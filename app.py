@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # CONEXION A BASE DE DATOS
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:catolica10@localhost:5432/TiendonaDb"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:12345@localhost:5432/TiendonaDb"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = "clave_secreta"
 
@@ -37,14 +37,16 @@ def contacto():
 
 @app.route('/productos', methods=['GET'])
 def lista_productos():
-    # Obtén el término de búsqueda desde la URL (si existe)
-    q = request.args.get('q', '')  # Si no hay valor, usará una cadena vacía
+    # OBTENER STRING PARA REALIZAR LA BÚSQUEDA
+    q = request.args.get('q', '')  # SI NULL STRING VACÍO
 
-    # Realiza la consulta a la base de datos y filtra por el término de búsqueda (si existe)
+    # BUSCAR EN BASE DE DATOS PARA COINCIDENCIA
     if q:
-        productos = Producto.query.filter(Producto.nombre.contains(q)).all()  # Filtra productos que contienen 'q' en el nombre
+        productos = Producto.query.filter(
+            Producto.nombre.contains(q) | Categoria.nombre.contains(q)
+        ).join(Categoria).all()  # JOIN PARA FILTRAR POR EL NOMBRE DE LA CATEGORÍA
     else:
-        productos = Producto.query.all()  # Si no hay búsqueda, muestra todos los productos
+        productos = Producto.query.all()  # CUANDO ESTÉ VACÍO MOSTRAR TODOS LOS PRODUCTOS
 
     return render_template('producto/index.html', productos=productos, q=q)
 
