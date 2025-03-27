@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # CONEXION A BASE DE DATOS
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:12345@localhost:5432/TiendonaDb"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:1234@localhost:5432/TiendonaDb"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = "clave_secreta"
 
