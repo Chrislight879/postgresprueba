@@ -1,6 +1,6 @@
 /* Navbar */
 .navbar {
-    background-color: #007bff;
+    background-image: url("https://atomoconviene.com/atomo-ecommerce/modules/ps_imageslider/images/21eaa9c68645331de2a26ddbef9e9a035b8027ee_952x352%20Banner%20de%20ofertas.png");
     color: white;
     display: flex;
     justify-content: space-between;
@@ -16,10 +16,13 @@
     box-sizing: border-box; /* Evita que se desborde */
 }
 
-.logouni¨{
-    height: 100px;
-    width: auto;
+.logouni {
+    height: 200px;  
+    width: auto;    
+    margin: 1em 0; 
 }
+
+
 
 .navbar-logo img {
     height: 50px;
@@ -65,11 +68,18 @@
 }
 
 .dropbtn {
-    background-color: #007bff;
+    background-color: #054568;
     color: white;
-    padding: 10px;
     border: none;
     cursor: pointer;
+
+    padding:10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.dropbtn button:hover {
+    background-color: #23035e;
 }
 
 .dropdown-content {

@@ -1,13 +1,61 @@
-<form method="POST">
-    {{ form.hidden_tag() }}
-    <label>Nombre:</label> {{ form.nombre }}
-    <label>Stock:</label> {{ form.stock }}
-    <label>Precio:</label> {{ form.precio }}
-    <label>Categoría:</label> {{ form.categoria_id }}
-    <label>Descripcion:</label> {{ form.descripcion}}
-    <label>Imagen URL:</label> {{ form.imagen }}
-    <button type="submit">Guardar</button>
-</form>
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
-</head>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-sm" style="max-width: 400px; margin: auto;">
+        <div class="card-header bg-danger text-white text-center">
+            <h3 class="mb-0">Agregar Producto</h3>
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                {{ form.hidden_tag() }}
+
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-box"></i></span>
+                    {{ form.nombre(class="form-control", placeholder="Nombre del producto") }}
+                </div>
+
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-sort-numeric-up"></i></span>
+                    {{ form.stock(class="form-control", placeholder="Cantidad en stock") }}
+                </div>
+
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                    {{ form.precio(class="form-control", placeholder="Precio en USD") }}
+                </div>
+
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-tags"></i></span>
+                    <select name="categoria_id" class="form-select custom-select">
+                        <option value="">Seleccione una categoría</option>
+                        {% for categoria in form.categoria_id.choices %}
+                            <option value="{{ categoria[0] }}">{{ categoria[1] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-align-left"></i></span>
+                    {{ form.descripcion(class="form-control", placeholder="Descripción del producto", rows="3") }}
+                </div>
+
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-image"></i></span>
+                    {{ form.imagen(class="form-control", placeholder="URL de la imagen") }}
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a href="{{ url_for('lista_productos') }}" class="btn2">Cancelar</a>
+                    <button type="submit" class="btn1">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- FontAwesome para los iconos -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+{% endblock %}
+

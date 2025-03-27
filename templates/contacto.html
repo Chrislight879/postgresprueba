@@ -1,40 +1,12 @@
+<!-- templates/portada.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portada - Métodos Numéricos</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-            text-align: center;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin: 0.5em 0;
-        }
-        h2, h3, h4 {
-            margin: 0.3em 0;
-        }
-        p {
-            margin: 0.5em 0;
-        }
-        .logouni {
-            height: 200px;  
-            width: auto;    
-            margin: 1em 0; 
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
 </head>
-<body>
+{% include 'navbar.html' %}
+
+{% block content %}
     <h1>UNIVERSIDAD CATÓLICA DE EL SALVADOR</h1>
     <h2>FACULTAD DE INGENIERÍA Y ARQUITECTURA</h2>
     <img src="{{ url_for('static', filename='img/logo.png') }}" class="logouni" alt="Logo Universidad">
@@ -49,5 +21,4 @@
     <p> IDANIA SOFÍA GALÁN AGUILAR</p>
     <p>DOCENTE: RAFAEL LEONARDO JIMÉNEZ ÁLVAREZ</p>
     <p>SANTA ANA, 10 DE ABRIL DE 2025</p>
-</body>
-</html>
+{% endblock %}
