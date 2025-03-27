@@ -5,8 +5,8 @@
 
     // Cerrar el menú si el usuario hace clic fuera de él
     window.onclick = function(event) {
-        if (!event.target.matches('.navbar-links a')) {
-            var dropdowns = document.getElementsByClassName("dropdown-menu");
+        if (!event.target.matches('.navbar-links a') && !event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
             for (var i = 0; i < dropdowns.length; i++) {
                 var openDropdown = dropdowns[i];
                 if (openDropdown.classList.contains('show')) {
@@ -22,7 +22,13 @@
         <img src="{{ url_for('static', filename='img/logoTiendona.png') }}" alt="Logo">
     </a>    
     <h1 class="navbar-title">Bienvenido a Mi Tienda</h1>  
-
+    <!-- Barra de búsqueda -->
+    <div class="search-form">
+        <form method="get" action="{{ url_for('lista_productos') }}">
+            <input type="text" name="q" placeholder="Buscar productos..." value="{{ q }}">
+            <button class="btn1" type="submit">Buscar</button> <!-- Aquí se usa la clase .btn1 -->
+        </form>
+    </div>
     <!-- Menú desplegable -->
     <div class="navbar-links">
         <button class="dropbtn" onclick="toggleMenu()">Menú ▼</button>
@@ -32,6 +38,3 @@
         </ul>
     </div>
 </nav>
-
-
-

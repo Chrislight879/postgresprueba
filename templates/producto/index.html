@@ -6,17 +6,11 @@
 </head>
 <body>
 
-    {% include "navbar.html" %}  <!-- ✅ Solo se incluye el navbar aquí -->
-
+    <!-- Aquí se incluye el navbar -->
+    {% include 'navbar.html' %}
+    <!-- Resto del contenido de la página -->
     <div class="container">
         <a href="{{ url_for('agregar_producto') }}" class="btn" style="color: black;">Agregar Producto</a>
-
-        <form method="GET" action="{{ url_for('lista_productos') }}" class="search-form">
-            <input type="text" name="q" placeholder="Buscar producto..." value="{{ q }}">
-            <button type="submit">Buscar</button>
-        </form>
-        
-
         <div class="table-container">
             <table>
                 <thead>

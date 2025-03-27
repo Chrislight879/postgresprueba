@@ -1,24 +1,19 @@
-
 /* Navbar */
-
-
-/* Logo alineado a la izquierda */
 .navbar {
     background-color: #007bff;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 40px;
-    width: auto;
+    height: 60px;
     padding: 10px 20px;
-}
-
-.navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    width: 100%;
+    box-sizing: border-box; /* Evita que se desborde */
 }
 
 .navbar-logo img {
@@ -26,12 +21,44 @@
     width: auto;
 }
 
-.navbar-links {
-    position: relative;
-    display: inline-block;
+.navbar-title {
+    font-size: 1.5em;
+    color: white;
+    margin-left: 10px;
 }
 
-/* Estilo del botón de menú */
+.search-form {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.search-form input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 250px;
+    margin-right: 10px;
+}
+
+.search-form button {
+    background-color: #022449;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background-color: #23035e;
+}
+
+.navbar-links {
+    position: relative;
+}
+
 .dropbtn {
     background-color: #007bff;
     color: white;
@@ -40,7 +67,6 @@
     cursor: pointer;
 }
 
-/* Estilos de la lista desplegable */
 .dropdown-content {
     display: none;
     position: absolute;
@@ -50,6 +76,7 @@
     z-index: 1;
     list-style: none;
     padding: 0;
+    right: 0;
 }
 
 .dropdown-content li {
@@ -71,12 +98,14 @@
     display: block;
 }
 
+
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: #f0f2f5;
     text-align: center;
     margin: 20px;
     padding: 20px;
+    margin-top: 70px;
 }
 
 main {
@@ -220,7 +249,7 @@ table {
 
 
 th {
-    background-color: #007bff;
+    background-color: #5300bf;
     color: white;
     padding: 12px;
     font-size: 18px;
@@ -321,7 +350,7 @@ footer {
 
 .search-form button {
     padding: 8px 15px;
-    background-color: #007BFF;
+    background-color: #054568;
     color: white;
     border: none;
     border-radius: 5px;
